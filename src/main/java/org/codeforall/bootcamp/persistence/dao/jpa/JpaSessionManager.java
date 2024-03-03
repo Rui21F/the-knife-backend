@@ -1,0 +1,40 @@
+package org.codeforall.bootcamp.persistence.dao.jpa;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+
+public class JpaSessionManager {
+    private EntityManagerFactory emf;
+    private EntityManager em;
+
+    /**
+     * Initializes a new {@code JPA Session Manager} instance given an entity manager factory
+     *
+     * @param emf the entity manager factory
+     */
+    public JpaSessionManager(EntityManagerFactory emf) {
+        this.emf = emf;
+    }
+
+
+    public void startSession() {
+
+        if (em == null) {
+            em = emf.createEntityManager();
+        }
+    }
+
+    public void stopSession() {
+
+        if (em != null) {
+            em.close();
+        }
+
+        em = null;
+    }
+
+    public EntityManager getCurrentSession() {
+        startSession();
+        return em;
+    }
+}

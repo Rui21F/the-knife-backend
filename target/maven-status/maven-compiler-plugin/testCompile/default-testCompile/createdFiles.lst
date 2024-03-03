@@ -1,0 +1,3 @@
+services/OwnerServecisImpTest.class
+dao/JpaTransactionManagerTest.class
+services/ClientServiceImpTest.class
